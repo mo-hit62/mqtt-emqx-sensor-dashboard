@@ -25,3 +25,22 @@ Python Sensor Publisher
         |
         v
 Live Temperature & Humidity Dashboard
+## Screenshots
+
+### Live MQTT Sensor Dashboard
+
+![MQTT Sensor Dashboard](screenshots/mqtt_dashboard.png)
+
+The dashboard displays live temperature and humidity values received through MQTT over WebSocket.
+
+### EMQX WebSocket Client
+
+![EMQX WebSocket Subscriptions](screenshots/emqx_websocket_subscriptions.png)
+
+The EMQX WebSocket client is subscribed to the temperature and humidity MQTT topics.
+
+### Live Sensor Messages
+
+![EMQX Received Messages](screenshots/emqx_received_messages.png)
+
+The EMQX client receives continuously changing temperature and humidity values published by the Python sensor publisher.
