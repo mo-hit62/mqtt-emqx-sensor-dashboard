@@ -25,7 +25,7 @@ Python Sensor Publisher
         |
         v
 Live Temperature & Humidity Dashboard
-## Screenshots
+
 
 ### Live MQTT Sensor Dashboard
 
