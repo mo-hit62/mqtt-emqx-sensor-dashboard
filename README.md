@@ -6,41 +6,52 @@ The project continuously generates temperature and humidity sensor values using 
 
 ## Project Architecture
 
-```text
-Python Sensor Publisher
-        |
-        | MQTT Publish
-        v
-   EMQX MQTT Broker
-        |
-        | MQTT over WebSocket
-        v
-     Web Browser
-        |
-        v
-      app.js
-        |
-        v
-    index.html
-        |
-        v
+Python Sensor Publisher  
+↓  
+MQTT Publish  
+↓  
+EMQX MQTT Broker  
+↓  
+MQTT over WebSocket  
+↓  
+Web Browser → app.js → index.html  
+↓  
 Live Temperature & Humidity Dashboard
 
+## How It Works
 
-### Live MQTT Sensor Dashboard
+1. `publisher.py` generates temperature and humidity values continuously.
+2. The Python program publishes the values to MQTT topics.
+3. EMQX receives the MQTT messages as the broker.
+4. The web dashboard connects to EMQX using MQTT over WebSocket.
+5. `app.js` subscribes to the temperature and humidity topics.
+6. Incoming messages are displayed live in the dashboard.
 
-![MQTT Sensor Dashboard](screenshots/mqtt_dashboard.png)
+## MQTT Topics
 
-The dashboard displays live temperature and humidity values received through MQTT over WebSocket.
+- `sensors/temperature`
+- `sensors/humidity`
 
-### EMQX WebSocket Client
+## Technologies Used
 
-![EMQX WebSocket Subscriptions](screenshots/emqx_websocket_subscriptions.png)
+- Python
+- MQTT
+- EMQX
+- MQTT over WebSocket
+- HTML
+- JavaScript
 
-The EMQX WebSocket client is subscribed to the temperature and humidity MQTT topics.
+## Project Structure
 
-### Live Sensor Messages
-
-![EMQX Received Messages](screenshots/emqx_received_messages.png)
-
-The EMQX client receives continuously changing temperature and humidity values published by the Python sensor publisher.
+```text
+mqtt-emqx-sensor-dashboard/
+├── dashboard/
+│   ├── app.js
+│   └── index.html
+├── screenshots/
+│   ├── mqtt_dashboard.png
+│   ├── emqx_websocket_subscriptions.png
+│   └── emqx_received_messages.png
+├── publisher.py
+├── README.md
+└── .gitignore
